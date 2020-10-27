@@ -1,6 +1,6 @@
 pipeline {
     parameters{
-        string defaultValue: "https://github.com/nogala/AndroidTools",
+        string defaultValue: "git@github.com:JCFlores93/AndroidTools.git",
                 description: "Repository",
                 name: 'REPO'
         string defaultValue: "master",
@@ -11,13 +11,15 @@ pipeline {
                 name: 'DEPLOY'
     }
     environment {
-        registry = "nogala/androidtest"
+        // registry = "nogala/androidtest"
+        registry = "jeanflores2c/androidtest"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
-    agent {
-        label 'automation_node'
-    }
+    // agent {
+    //     label 'automation_node'
+    // }
+    agent any
     stages {
         stage('Cloning Git') {
             steps {
